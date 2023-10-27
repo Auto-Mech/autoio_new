@@ -282,7 +282,7 @@ def _fc_mat(fc_caps):
         fc_idxs.append(tuple(int(val)-1 for val in caps[:-1]))
         fc_vals.append(float(caps[-1]))
 
-    fc_mat = automol.util.highd_mat.build_full_array(
+    fc_mat = automol.util.tensor.build_full_array(
         fc_idxs, fc_vals, fill_perms=True)
 
     return fc_mat

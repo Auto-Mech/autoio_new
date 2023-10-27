@@ -3,7 +3,7 @@ Writes MESS input for a molecule
 """
 
 import os
-import automol.pot
+import automol._deprecated
 from ioformat import build_mako_str
 from ioformat import indent
 from mess_io.writer import _format as messformat
@@ -314,7 +314,7 @@ def rotor_internal(group, axis, symmetry, grid_size, mass_exp_size,
         template_keys=rotor_keys)
 
 
-def mdhr_data(pots, freqs=None, nrot=0):
+def mdhr_data(pot_dct, freqs=None, nrot=0):
     """ Writes the string for an auxiliary data file for MESS containing
         potentials and vibrational frequencies of a
         multidimensional hindered rotor, up to four dimensions.
@@ -326,10 +326,11 @@ def mdhr_data(pots, freqs=None, nrot=0):
         :rtype: str
     """
 
-    assert pots, 'Potential has no values'
+    assert pot_dct, 'Potential has no values'
 
     # Remap potential so that keys are indices, not vcoord valyes
-    pots_byidx = automol.pot.by_index(pots)
+    pot_obj = automol.data.potent.from_dict(pot_dct)
+    pots_byidx = automol.data.potent.dict_(pot_obj, index=True, drop_null=True)
     pot_idxs = tuple(pots_byidx.keys())
 
     # Get the dimensions of the MDHR

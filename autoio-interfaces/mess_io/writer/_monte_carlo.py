@@ -5,7 +5,7 @@ Writes MESS input for a monte carlo partition function calculation
 import os
 from phydat import phycon
 import automol.geom
-import automol.util.mat
+import automol.util.matrix
 from ioformat import build_mako_str
 from ioformat import remove_trail_whitespace
 from ioformat import indent
@@ -127,12 +127,12 @@ def monte_carlo_data(geos, enes, grads=(), hessians=()):
         dat_str += 'Geometry' + '\n'
         dat_str += messformat.mc_geometry_format(geos[idx]) + '\n'
         if grads:
-            grad_str = automol.util.mat.string(
+            grad_str = automol.util.matrix.string(
                 grads[idx], val_format='{0:>16.12f}')
             dat_str += 'Gradient'+'\n'
             dat_str += grad_str + '\n'
         if hessians:
-            hess_str = automol.util.mat.string(
+            hess_str = automol.util.matrix.string(
                 hessians[idx], val_format='{0:>16.12f}')
             dat_str += 'Hessian'+'\n'
             dat_str += hess_str+'\n'

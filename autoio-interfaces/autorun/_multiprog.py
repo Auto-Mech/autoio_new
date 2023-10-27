@@ -2,7 +2,7 @@
 """
 
 import os
-import automol.formula
+import automol.form
 from phydat import phycon
 import mess_io.reader
 import thermp_io.reader
@@ -117,7 +117,7 @@ def thermo(thermp_script_str, pac99_script_str, run_dir,
     temps = temps[:-1]
 
     # Run ThermP and read the Heat-of-Formation at 298K
-    formula_str = automol.formula.string(formula)
+    formula_str = automol.form.string(formula)
     _, thermp_output_strs = thermp_direct(
         thermp_script_str, run_dir,
         pf_str, formula_str, hform0, temps,

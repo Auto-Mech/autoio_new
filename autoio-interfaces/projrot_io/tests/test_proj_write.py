@@ -227,8 +227,8 @@ def __bc_mat():
 
     mat3d_str = pathtools.read_file(DAT_PATH, 'mat3d.dat')
     mat4d_str = pathtools.read_file(DAT_PATH, 'mat4d.dat')
-    mat3d = automol.util.highd_mat.from_string(mat3d_str)
-    mat4d = automol.util.highd_mat.from_string(mat4d_str)
+    mat3d = automol.util.tensor.from_string(mat3d_str)
+    mat4d = automol.util.tensor.from_string(mat4d_str)
 
     bmat_str = projrot_io.writer.bmatrix(mat3d)
     cmat_str = projrot_io.writer.cmatrix(mat4d)

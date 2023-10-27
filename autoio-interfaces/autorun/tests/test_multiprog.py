@@ -33,7 +33,7 @@ def test__thermo():
 
     ref_hform298 = -0.028389069688367432
 
-    formula_str = automol.formula.string(FORMULA)
+    formula_str = automol.form.string(FORMULA)
 
     thermp_script_str = autorun.SCRIPT_DCT['thermp']
     pac99_script_str = autorun.SCRIPT_DCT['pac99'].format(formula_str)
