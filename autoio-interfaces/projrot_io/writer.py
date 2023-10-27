@@ -3,7 +3,7 @@
 """
 
 import os
-from automol.util import highd_mat
+from automol.util import tensor
 from ioformat import build_mako_str
 from ioformat import remove_trail_whitespace
 from phydat import phycon
@@ -194,7 +194,7 @@ def bmatrix(bmat):  # pragma: no cover
 
     nd1, nd2, nd3 = bmat.shape
     bmat_str = f'{nd1:>12d}{nd2*nd3:>12d}\n'
-    bmat_str += highd_mat.string_submat_3d(bmat)
+    bmat_str += tensor.string_submat_3d(bmat)
 
     return bmat_str
 
@@ -205,6 +205,6 @@ def cmatrix(cmat):  # pragma: no cover
 
     _, nd2, nd3, nd4 = cmat.shape
     cmat_str = f'{nd2:>12d}{nd3*nd4:>12d}\n'
-    cmat_str += highd_mat.string_submat_4d(cmat)
+    cmat_str += tensor.string_submat_4d(cmat)
 
     return cmat_str

@@ -57,7 +57,7 @@ def geometry_format(geo):
     """
 
     xyzs = tuple(xyz for _, xyz in geo)
-    geo_str = automol.util.mat.string(xyzs, val_format='{:>12.8f}')
+    geo_str = automol.util.matrix.string(xyzs, val_format='{:>12.8f}')
 
     return _end_format('geom', 'end', geo_str)
 
@@ -66,7 +66,7 @@ def gradient_format(grad):
     """ format hessian
     """
 
-    grad_str = automol.util.mat.string(grad, val_format='{:>12.8f}')
+    grad_str = automol.util.matrix.string(grad, val_format='{:>12.8f}')
 
     return _end_format('grads', 'end', grad_str)
 
@@ -76,7 +76,7 @@ def hessian_format(hess):
     """
 
     hess = list(chain.from_iterable(hess))
-    hess_str = automol.util.vec.string(
+    hess_str = automol.util.vector.string(
         hess, num_per_row=6, val_format='{0:>12.8f}')
 
     return _end_format('hessian', 'end', hess_str)

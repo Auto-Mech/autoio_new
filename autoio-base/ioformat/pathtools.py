@@ -1,6 +1,9 @@
 """
   Handle the generation of paths as well, moving between them
   and interacting with files that may exist at the paths.
+
+I think much of this could be replaced by pathlib:
+https://realpython.com/python-pathlib/#reading-and-writing-files
 """
 
 import os

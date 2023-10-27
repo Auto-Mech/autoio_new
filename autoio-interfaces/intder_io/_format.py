@@ -80,7 +80,7 @@ def symbols_format(geo):
     """
 
     symbs = automol.geom.symbols(geo)
-    symb_str = automol.util.vec.string(
+    symb_str = automol.util.vector.string(
         symbs, num_per_row=6, val_format='{0:>12s}')
 
     return symb_str
@@ -97,7 +97,7 @@ def hessian_format(hess):
 
     # Flatten the Hessian out for ease of writing the string
     hess = tuple(chain.from_iterable(hess))
-    hess_str = automol.util.vec.string(
+    hess_str = automol.util.vector.string(
         hess, num_per_row=3, val_format='{0:>20.10f}')
 
     return hess_str

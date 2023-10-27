@@ -164,7 +164,7 @@ def fragment_geometries(ts_zma, rct_zmas, bnd_keys):
             xyz3 = iso_fgeo[fidxs[3]][1] if len(mep_fgeo) > 2 else 0.0
 
             # Calculate the X Position for the IsoFrag structure
-            xyzp = automol.util.vec.from_internals(
+            xyzp = automol.util.vector.from_internals(
                 dist=xdistance, xyz1=xyz1, ang=xangle, xyz2=xyz2,
                 dih=xdihedral, xyz3=xyz3)
 

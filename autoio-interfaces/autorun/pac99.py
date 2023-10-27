@@ -24,7 +24,7 @@ def nasa_polynomial(script_str, run_dir, input_str, name, formula,
     """
 
     # Run PAC99 to get the output file
-    formula_str = automol.formula.string(formula)
+    formula_str = automol.form.string(formula)
     output_strs = direct(script_str, run_dir, input_str, formula_str)
 
     # Obtain the NASA polynomial, convert if necessary

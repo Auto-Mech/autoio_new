@@ -29,13 +29,13 @@ def reaction_coordinate_check_idxs(script_str, run_dir,
         if ted_mode_dct is not None:
             # Get the zmat names corresponding to frm/brk keys; remove Nones
             ted_keys = frozenset(ted_mode_dct.keys())
-
-            frm_keys = automol.reac.forming_bond_keys(zrxn)
-            brk_keys = automol.reac.breaking_bond_keys(zrxn)
+            tsg = automol.reac.ts_graph(zrxn)
+            frm_keys = automol.graph.ts.forming_bond_keys(tsg)
+            brk_keys = automol.graph.ts.breaking_bond_keys(tsg)
             zrxn_keys = frozenset().union(*(frm_keys, brk_keys))
             print('all keys test', zrxn_keys)
 
-            print(f'TED Comparisons for {zrxn.class_}:')
+            print(f'TED Comparisons for {automol.reac.class_(zrxn)}:')
 
             print(f'- Freq: {ted_mode_freq} cm-1')
 
@@ -98,7 +98,7 @@ def reaction_coordinate_check(script_str, run_dir,
             rxn_names = (tuple(x for x in rxn_names[0] if x is not None) +
                          tuple(x for x in rxn_names[1] if x is not None))
 
-            print(f'TED Comparisons for {zrxn.class_}:')
+            print(f'TED Comparisons for {automol.reac.class_(zrxn)}:')
             print(f'- Freq: {ted_mode_freq} cm-1')
             tedname_str = ' '.join(
                 f'{name} ({pct})' for name, pct in ted_mode_names_dct.items()
