@@ -176,8 +176,9 @@ def _frozen_coordinate_strings(geo, frozen_coordinates):
                         frz_coo_keys_nodum.append(frz_keys)
             # Shift the final set down to preclude the dummy atom
             # then increment up for string
-            frz_coo_keys = [automol.zmat.shift_down(geo, keys)
-                            for keys in frz_coo_keys_nodum]
+            zc_ = automol.zmat.conversion_info(geo)
+            frz_coo_keys = automol.util.zmat_conv.relabel_zmatrix_key_sequence(
+                zc_, frz_coo_keys_nodum)
             frz_coo_keys = [tuple(val+1 for val in keys)
                             for keys in frz_coo_keys]
             frz_coo_strs = tuple(' '.join(map(str, coo_keys))
