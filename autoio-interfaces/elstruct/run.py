@@ -1,7 +1,6 @@
 """ core run function
 """
 
-from email.mime import audio
 from autorun import from_input_string
 import automol
 import ase
