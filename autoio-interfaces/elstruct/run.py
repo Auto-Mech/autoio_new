@@ -49,6 +49,7 @@ def direct(input_writer, script_str, run_dir, prog,
             atoms.get_potential_energy()
             version_str = f'ase_{ase.__version__}-psi4_{calc.psi4.__version__}'
             calc.results['version'] = version_str
+            calc.results['energy'] = calc.results['energy'] / Hartree
             input_str = str(calc.parameters)
             output_str = str(calc.results)
     else:
