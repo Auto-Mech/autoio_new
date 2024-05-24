@@ -24,6 +24,9 @@ class Module():
 
 class Program():
     """ Programs supported in elstruct """
+    ASE = 'ase'
+    ASE_PSI4 = 'ase_psi4'
+    ASE_NWX = 'ase_nwx'
     CFOUR2 = 'cfour2'
     GAUSSIAN09 = 'gaussian09'
     GAUSSIAN03 = 'gaussian03'
