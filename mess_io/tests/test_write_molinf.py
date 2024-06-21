@@ -230,10 +230,10 @@ def test__core_phasespace_writer():
 
     # Use the writer to create a string for each of the core sections
     core_pst1_str = mess_io.writer.core_phasespace(
-        GEO1, GEO2, SYM_FACTOR2, STOICH)
+        [GEO1, GEO2], SYM_FACTOR2, STOICH)
 
     core_pst2_str = mess_io.writer.core_phasespace(
-        GEO1, GEO2, SYM_FACTOR2, STOICH,
+        [GEO1, GEO2], SYM_FACTOR2, STOICH,
         pot_prefactor=POT_PREFACTOR,
         pot_exp=POT_EXP,
         tstlvl=TSTLVL)
@@ -335,3 +335,7 @@ def test__tunnel_read_writer():
         INP_PATH, 'tunnel_read1.inp')
     assert tunnel_read2_str == pathtools.read_file(
         INP_PATH, 'tunnel_read2.inp')
+
+
+if __name__ == "__main__":
+    test__core_multirotor_writer()

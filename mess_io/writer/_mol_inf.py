@@ -116,16 +116,14 @@ def core_multirotor(geo, sym_factor, pot_surf_file, int_rot_str,
         template_keys=core_keys)
 
 
-def core_phasespace(geo1, geo2, sym_factor, stoich,
+def core_phasespace(geos, sym_factor, stoich,
                     pot_prefactor=10.0, pot_exp=6.0, tstlvl='e'):
     """ Writes the string that defines the `Core` section for a
         phase space theory model of a transition state for a MESS input file by
         formatting input information into strings a filling Mako template.
 
-        :param geo1: geometry of the dissociation species 1
-        :type geo1: list
-        :param geo2: geometry of the dissociation species 2
-        :type geo2: list
+        :param geos: Geometries of the dissociation species
+        :type geos: list
         :param sym_factor: symmetry factor of transition state
         :type sym_factor: float
         :param stoich: combined stoichiometry of dissociation species 1 and 2
@@ -142,12 +140,8 @@ def core_phasespace(geo1, geo2, sym_factor, stoich,
     assert tstlvl in ('e', 'ej', 't')
 
     # Format the geometry section of each fragment
-    natom1, geo1 = messformat.geometry_format(geo1)
-    natom2, geo2 = messformat.geometry_format(geo2)
-
-    # Indent the geometry strings
-    geo1 = indent(geo1, 2)
-    geo2 = indent(geo2, 2)
+    natm_strs, geo_strs = zip(*map(messformat.geometry_format, geos))
+    geo_strs = [indent(geo_str, 2) for geo_str in geo_strs]
 
     # Format the tstlvl string
     assert tstlvl in ('e', 'ej', 't')
@@ -156,10 +150,8 @@ def core_phasespace(geo1, geo2, sym_factor, stoich,
     # Create dictionary to fill template
     core_keys = {
         'sym_factor': sym_factor,
-        'natom1': natom1,
-        'geo1': geo1,
-        'natom2': natom2,
-        'geo2': geo2,
+        'natoms': natm_strs,
+        'geos': geo_strs,
         'stoich': stoich,
         'pot_prefactor': pot_prefactor,
         'pot_exp': pot_exp,
